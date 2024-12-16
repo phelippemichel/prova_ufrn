@@ -1,4 +1,4 @@
-const Categoria = require('../models/categoria');
+const { Categoria } = require('../models/categoria');
 
 // Adiciona uma nova categoria
 const adicionarCategoria = async (req, res) => {
@@ -15,6 +15,7 @@ const adicionarCategoria = async (req, res) => {
         const categoria = await Categoria.create({ nome });
         res.status(201).json(categoria);
     } catch (error) {
+        console.error('Erro ao adicionar categoria:', error);
         res.status(400).json({ error: 'Erro ao adicionar categoria', details: error.message });
     }
 };
@@ -25,6 +26,7 @@ const listarCategorias = async (req, res) => {
         const categorias = await Categoria.findAll();
         res.status(200).json(categorias);
     } catch (error) {
+        console.error('Erro ao listar categorias:', error);
         res.status(500).json({ error: 'Erro ao listar categorias', details: error.message });
     }
 };
@@ -46,6 +48,7 @@ const atualizarCategoria = async (req, res) => {
         await categoria.save();
         res.status(200).json(categoria);
     } catch (error) {
+        console.error('Erro ao atualizar categoria:', error);
         res.status(400).json({ error: 'Erro ao atualizar categoria', details: error.message });
     }
 };
@@ -65,6 +68,7 @@ const removerCategoria = async (req, res) => {
         await categoria.destroy();
         res.status(204).send(); // Retorna sem conteúdo (no content)
     } catch (error) {
+        console.error('Erro ao remover categoria:', error);
         res.status(500).json({ error: 'Erro ao remover categoria', details: error.message });
     }
 };

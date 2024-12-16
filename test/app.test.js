@@ -11,3 +11,7 @@ beforeAll(async () => {
     const produto = await Produto.create({ nome: "Celular", preco: 1200.0, quantidade: 50, categoriaId: categoria.id });
     await Estoque.create({ produtoId: produto.id, quantidade: 50 });
   });
+
+test('Basic test to ensure test suite runs', () => {
+    expect(true).toBe(true);
+});
