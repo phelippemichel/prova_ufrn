@@ -20,7 +20,7 @@ const Estoque = sequelize.define('Estoque', {
     timestamps: false,
 });
 
-// Relacionar Estoque com Produto (um estoque está associado a um produto)
-Estoque.belongsTo(Produto, { foreignKey: 'produtoId' });
+
+Estoque.belongsTo(Produto, { foreignKey: 'produtoId', as: 'produto' });
 
 module.exports = {Estoque};

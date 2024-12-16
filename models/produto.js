@@ -17,10 +17,9 @@ const Produto = sequelize.define('Produto', {
     },
 }, {
     tableName: 'produtos',
-    timestamps: false, // Desativa createdAt e updatedAt
+    timestamps: false,
 });
 
-// Definir o relacionamento (um produto pode ter uma categoria)
 Produto.belongsTo(Categoria, {
     foreignKey: 'categoriaId',
     as: 'categoria',
